@@ -1,0 +1,10 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
+
+[tool.pytest.ini_options.markers]
+gpu = "marks tests that require a GPU (skip with -m 'not gpu')"
+ollama = "marks tests that require Ollama to be running"

@@ -1,0 +1,52 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.env
+.venv
+env.bak/
+venv.bak/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Models and Large weights
+models/*.pkl
+models/*.pt
+models/*.onnx
+models/*.bin
+models/weights/
+HuggingFace/
+
+# Output and Data
+output/
+data/
+*.db
+*.sqlite3
+
+# Calibration data
+calibration/*.json
+calibration/*.png
+calibration/*.jpg
+calibration/frames/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+
+# Cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/

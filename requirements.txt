@@ -1,0 +1,70 @@
+# PULSE — Python Dependencies
+# Install: pip install -r requirements.txt
+# GPU: CUDA 12.x (NVIDIA RTX 4050)
+# Python: 3.11+
+
+# ── Web Framework ──────────────────────────────────────────────────
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+python-multipart==0.0.12
+websockets==13.1
+
+# ── Core Numerics ──────────────────────────────────────────────────
+numpy==1.26.4
+scipy==1.14.1
+
+# ── Deep Learning (CUDA) ───────────────────────────────────────────
+# Install PyTorch separately with CUDA support:
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+torch>=2.2.0
+torchvision>=0.17.0
+torchaudio>=2.2.0
+
+# ── HuggingFace ────────────────────────────────────────────────────
+transformers==4.46.3
+accelerate==1.1.1
+bitsandbytes==0.44.1          # 4-bit quantisation (requires CUDA)
+huggingface-hub==0.26.2
+qwen-vl-utils>=0.0.9          # Qwen3-VL / Qwen2.5-VL image/video processing
+
+# ── Depth & Vision ────────────────────────────────────────────────
+opencv-python==4.10.0.84
+open3d==0.18.0                # Point cloud processing
+Pillow==10.4.0
+
+# ── Visual Odometry ───────────────────────────────────────────────
+# Option A (recommended): DPVO — Deep Patch VO, NeurIPS 2023, active repo
+#   pip install dpvo  (requires CUDA — install separately)
+# Option B: stella_vslam — active ORB-SLAM3 successor
+#   pip install stella_vslam
+# Both are optional: system falls back to 2/3 scale anchors automatically
+
+# ── Acoustic / Audio ──────────────────────────────────────────────
+librosa==0.10.2.post1
+soundfile==0.12.1             # WAV reading
+numpy                         # already listed
+
+# ── Machine Learning ──────────────────────────────────────────────
+scikit-learn==1.5.2
+joblib==1.4.2
+
+# ── LLM / Ollama ──────────────────────────────────────────────────
+ollama==0.3.3
+
+# ── PDF Generation ────────────────────────────────────────────────
+reportlab==4.2.5
+
+# ── Geospatial / OSM ──────────────────────────────────────────────
+overpy==0.7                   # Overpass API (OSM queries)
+requests==2.32.3
+
+# ── Utilities ─────────────────────────────────────────────────────
+python-dotenv==1.0.1
+pydantic==2.10.3
+pydantic-settings==2.6.1
+loguru==0.7.2                 # Structured logging
+tqdm==4.67.1                  # Progress bars
+
+# ── Testing ───────────────────────────────────────────────────────
+pytest==8.3.4
+pytest-asyncio==0.24.0
