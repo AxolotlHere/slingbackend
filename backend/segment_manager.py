@@ -128,11 +128,16 @@ class SegmentManager:
             mid_idx = len(segment["gps_buffer"]) // 2
             segment["gps"] = segment["gps_buffer"][mid_idx]
             
-            # Calculate average speed if available in GPS data (m/s)
-            speeds = [p.get("speed", 0) for p in segment["gps_buffer"] if p.get("speed") is not None]
-            if speeds:
-                segment["avg_speed_ms"] = sum(speeds) / len(speeds)
-                segment["avg_speed_kmh"] = segment["avg_speed_ms"] * 3.6
+            # Calculate average speed — PWA sends speed_kmh, browser sends speed (m/s)
+            speeds_kmh = []
+            for p in segment["gps_buffer"]:
+                if p.get("speed_kmh") is not None:
+                    speeds_kmh.append(p["speed_kmh"])
+                elif p.get("speed") is not None:
+                    speeds_kmh.append(p["speed"] * 3.6)
+            if speeds_kmh:
+                segment["avg_speed_kmh"] = sum(speeds_kmh) / len(speeds_kmh)
+                segment["avg_speed_ms"] = segment["avg_speed_kmh"] / 3.6
             else:
                 segment["avg_speed_ms"] = 0.0
                 segment["avg_speed_kmh"] = 0.0
